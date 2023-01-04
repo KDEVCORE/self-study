@@ -12,6 +12,7 @@ public class App {
         int S = Integer.parseInt(st.nextToken());
         int P = Integer.parseInt(st.nextToken());
         int Result = 0;
+        
         char A[] = new char[S];
         checkArr = new int[4];
         myArr = new int[4];
