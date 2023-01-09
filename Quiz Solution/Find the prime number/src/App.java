@@ -8,19 +8,19 @@ public class App {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int start = Integer.parseInt(st.nextToken());
         int end = Integer.parseInt(st.nextToken()); // 1 <= start <= end <= 1000000
-        boolean[] a = new boolean[end+1];
+        boolean[] primeNumber = new boolean[end+1];
         for(int i=2; i<=end; i++) {
-            a[i] = true;
+            primeNumber[i] = true;
         }
         for(int i=2; i<Math.sqrt(end); i++) {
-            if(!a[i]) continue;
+            if(!primeNumber[i]) continue;
             for(int j=i+i; j<=end; j+=i) {
-                a[j] = false;
+                primeNumber[j] = false;
             }
         }
         StringBuilder sb = new StringBuilder();
         for(int i=start; i<=end; i++) {
-            if(a[i]) sb.append(i).append("\n");
+            if(primeNumber[i]) sb.append(i).append("\n");
         }
         System.out.println(sb);
     }
