@@ -20,7 +20,7 @@ public class App {
             check = new int[n];
             isEven = true;
             for(int j=0; j<n; j++) a[j] = new ArrayList<Integer>();
-            for(int j=0; j<e; j++) { // 인접 리스트로 그래프 저장하기
+            for(int j=0; j<e; j++) { // 인접 리스트로 그래프 저장
                 st = new StringTokenizer(br.readLine());
                 int start = Integer.parseInt(st.nextToken())-1;
                 int end = Integer.parseInt(st.nextToken())-1;
