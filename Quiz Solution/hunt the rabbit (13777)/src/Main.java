@@ -23,14 +23,10 @@ public class Main {
         while(start <= end) {
             int mid = (start + end) / 2;
             sb.append(mid + " ");
-            if(target > array[mid]) {
-                start = mid + 1;
-            } else if(target < array[mid]) {
-                end = mid - 1;
-            } else {
-                sb.append("\n");
-                break;
-            }
+            if(target > array[mid]) start = mid + 1;
+            else if(target < array[mid]) end = mid - 1;
+            else break;
         }
+        sb.append("\n");
     }
 }
