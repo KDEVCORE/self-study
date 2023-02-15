@@ -4,6 +4,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int[] tickets, temp;
+    static int result;
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int soldout = Integer.parseInt(br.readLine());
@@ -11,20 +12,16 @@ public class Main {
         temp = new int[soldout + 1];
         StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i=1; i<=soldout; i++) tickets[i] = Integer.parseInt(st.nextToken());
+        result = Integer.MAX_VALUE;
         mergeSort(1, soldout);
-        for(int i=0; i<soldout; i++) {
-            if((i+1) != tickets[i]) {
-                System.out.println(i+1);
-                return;
-            }
-        }
+        System.out.println(result);
     }
     private static void mergeSort(int start, int end) {
         if(end - start < 1) return;
         int mid = start + (end - start) / 2;
         mergeSort(start, mid);
         mergeSort(mid+1, end);
-        // temp = tickets.clone();
+        temp = tickets.clone();
         for(int i=start; i<=end; i++) temp[i] = tickets[i];
         int k = start;
         int index1 = start;
@@ -35,6 +32,7 @@ public class Main {
                 k++;
                 index2++;
             } else {
+                if(tickets[k] != index1) result = Math.min(result, index1);
                 tickets[k] = temp[index1];
                 k++;
                 index1++;
