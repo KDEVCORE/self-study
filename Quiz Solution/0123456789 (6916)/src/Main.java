@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int number = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
         switch(number) {
             case 0:
             case 2:
@@ -15,10 +14,8 @@ public class Main {
             case 7:
             case 8:
             case 9:
-            sb.append(" * * *\n");
+            System.out.println(" * * *");
             break;
-            default:
-            sb.append("      \n");
         }
         for(int i=0; i<3; i++) {
             switch(number) {
@@ -27,16 +24,16 @@ public class Main {
                 case 7:
                 case 8:
                 case 9:
-                sb.append("*     *\n");
+                System.out.println("*     *");
                 break;
                 case 5:
                 case 6:
-                sb.append("*\n");
+                System.out.println("*");
                 break;
                 case 1:
                 case 2:
                 case 3:
-                sb.append("      *\n");
+                System.out.println("      *");
                 break;
             }
         }
@@ -48,20 +45,20 @@ public class Main {
             case 6:
             case 8:
             case 9:
-            sb.append(" * * *\n");
+            System.out.println(" * * *");
             break;
             default:
-            sb.append("      \n");
+            System.out.println("");
         }
         for(int i=0; i<3; i++) {
             switch(number) {
                 case 0:
                 case 6:
                 case 8:
-                sb.append("*     *\n");
+                System.out.println("*     *");
                 break;
                 case 2:
-                sb.append("*\n");
+                System.out.println("*");
                 break;
                 case 1:
                 case 3:
@@ -69,7 +66,7 @@ public class Main {
                 case 5:
                 case 7:
                 case 9:
-                sb.append("      *\n");
+                System.out.println("      *");
                 break;
             }
         }
@@ -81,11 +78,8 @@ public class Main {
             case 6:
             case 8:
             case 9:
-            sb.append(" * * *\n");
+            System.out.println(" * * *");
             break;
-            // default:
-            // sb.append("      \n");
         }
-        System.out.print(sb);
     }
 }
