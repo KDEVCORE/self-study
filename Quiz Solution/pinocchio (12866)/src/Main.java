@@ -1,20 +1,35 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class Main {
-    static char[] chromosome = {'A', 'C', 'G', 'T'};
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int length = Integer.parseInt(br.readLine());
         String baseSequence = br.readLine();
-        ArrayList<String> valid = new ArrayList<>();
+        long a = 0, c = 0, g = 0, t = 0;
         for(char item: baseSequence.toCharArray()) {
-            
+            switch(item) {
+                case 'A':
+                    a++;
+                break;
+                case 'C':
+                    c++;
+                break;
+                case 'G':
+                    g++;
+                break;
+                case 'T':
+                    t++;
+                break;
+            }
         }
-    }
-    public static long factorial(Long n) {
-        if(n == 0) return 1;
-        return n * factorial(n-1);
+        long div = 1000000007;
+        long result = a * c;
+        result %= div;
+        result *= g;
+        result %= div;
+        result *= t;
+        result %= div;
+        System.out.println(result);
     }
 }
