@@ -15,7 +15,7 @@ public class Main {
         Arrays.sort(trees);
 
         int min = 1, max = trees[treeCount-1];
-        int result = Integer.MIN_VALUE;
+        int result = 0;
         while(min <= max) {
             int mid = (min + max) / 2;
             long sum = 0;
@@ -25,7 +25,6 @@ public class Main {
                 min = mid + 1;
             } else {
                 max = mid - 1;
-                if(max == 0) result = Math.max(result, max);
             }
         }
         System.out.println(result);
