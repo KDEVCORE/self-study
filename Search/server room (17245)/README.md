@@ -17,3 +17,5 @@
 - 이진 탐색
 
 > 합계 변수의 자료형은 long을 써야 하는지 고려하기
+
+> 참고: [나무 자르기#2805](https://github.com/KDEVCORE/self-study/tree/main/Search/tree%20cutting%20(2805))
