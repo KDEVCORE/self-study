@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
@@ -12,36 +12,25 @@ public class Main {
         int period = Integer.parseInt(st.nextToken());
         int target = Integer.parseInt(st.nextToken());
         int beers = Integer.parseInt(st.nextToken());
-        Beer[] beerType = new Beer[beers];
-        int maxLevel = Integer.MIN_VALUE;
+        ArrayList<Beer> beerList = new ArrayList<>();
         for(int i=0; i<beers; i++) {
             st = new StringTokenizer(br.readLine());
-            beerType[i] = new Beer(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
-            maxLevel = Math.max(maxLevel, beerType[i].level);
+            beerList.add(new Beer(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
         }
-        Arrays.sort(beerType);
-
-        int min = 1, max = maxLevel, result = Integer.MAX_VALUE;
-        while(min <= max) {
-            int mid = (min + max) / 2;
-            long sum = 0;
-            PriorityQueue<Integer> temp = new PriorityQueue<>(Collections.reverseOrder());
-            for(Beer item: beerType) {
-                if(item.level > mid) break;
-                temp.offer(item.preference);
-            }
-            if(temp.size() < period) {
-                min = mid + 1;
-                continue;
-            }
-            for(int i=0; i<period; i++) sum += temp.poll();
-            if(sum < target) min = mid + 1;
-            else {
-                result = Math.min(result, mid);
-                max = mid - 1;
+        Collections.sort(beerList);
+        
+        PriorityQueue<Integer> beerQueue = new PriorityQueue<>();
+        long sum = 0, result = -1;
+        for(Beer beer: beerList) {
+            beerQueue.offer(beer.preference);
+            sum += beer.preference;
+            if (beerQueue.size() > period) sum -= beerQueue.poll();
+            if (beerQueue.size() == period && sum >= target) {
+                result = beer.level;
+                break;
             }
         }
-        System.out.println(result == Integer.MAX_VALUE ? "-1" : result);
+        System.out.println(result);
     }
 }
 class Beer implements Comparable<Beer> {
