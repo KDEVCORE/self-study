@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
@@ -27,12 +26,9 @@ public class Main {
             int mid = (min + max) / 2;
             long sum = 0;
             PriorityQueue<Integer> temp = new PriorityQueue<>(Collections.reverseOrder());
-            for(int i=0; i<beers; i++) {
-                if(beerType[i].level <= mid) {
-                    temp.offer(beerType[i].preference);
-                } else {
-                    break;
-                }
+            for(Beer item: beerType) {
+                if(item.level > mid) break;
+                temp.offer(item.preference);
             }
             if(temp.size() < period) {
                 min = mid + 1;
