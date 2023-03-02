@@ -1,8 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -25,10 +26,10 @@ public class Main {
         while(min <= max) {
             int mid = (min + max) / 2;
             long sum = 0;
-            ArrayList<Integer> temp = new ArrayList<>();
+            PriorityQueue<Integer> temp = new PriorityQueue<>(Collections.reverseOrder());
             for(int i=0; i<beers; i++) {
                 if(beerType[i].level <= mid) {
-                    temp.add(beerType[i].preference);
+                    temp.offer(beerType[i].preference);
                 } else {
                     break;
                 }
@@ -37,8 +38,7 @@ public class Main {
                 min = mid + 1;
                 continue;
             }
-            Collections.sort(temp, Collections.reverseOrder());
-            for(int i=0; i<period; i++) sum += temp.get(i);
+            for(int i=0; i<period; i++) sum += temp.poll();
             if(sum < target) min = mid + 1;
             else {
                 result = Math.min(result, mid);
